@@ -1,0 +1,70 @@
+﻿USE master
+DROP DATABASE TrungTamNgoaiNguDB
+CREATE DATABASE TrungTamNgoaiNguDB
+USE TrungTamNgoaiNguDB
+
+CREATE TABLE THISINH (
+	SoBaoDanh NVARCHAR(50),
+	Ho NVARCHAR(50),
+	Ten NVARCHAR(50),
+	GioiTinh NVARCHAR(50),
+	NgaySinh NVARCHAR(50),
+	NoiSinh NVARCHAR(50),
+	SDT NVARCHAR(50),
+	CMND NVARCHAR(50),
+	Anh46 NVARCHAR(50)
+)
+
+CREATE TABLE PHONGTHI (
+	TenPhongThi NVARCHAR(50),
+	Ho NVARCHAR(50),
+	SoLuong NVARCHAR(50)
+)
+
+CREATE TABLE PHIEUDUTHI (
+	TenPhongThi NVARCHAR(50),
+	CaThi NVARCHAR(50),
+	SoBaoDanh NVARCHAR(50)
+)
+
+CREATE TABLE KHOATHI (
+	MaKhoaThi NVARCHAR(50),
+	TenKhoaThi NVARCHAR(50),
+	TrinhDo NVARCHAR(50),
+	NgaySinh NVARCHAR(50)
+)
+
+CREATE TABLE KETQUA (
+	SoBaoDanh NVARCHAR(50),
+	MaKhoaThi NVARCHAR(50),
+	DiemNghe NVARCHAR(50),
+	DiemNoi NVARCHAR(50),
+	DiemDoc NVARCHAR(50),
+	DiemViet NVARCHAR(50)
+)
+
+INSERT INTO THISINH VALUES 
+('A2001','Tang','CHI', 'NAM', '18/01/2000', 'TPHCM', '08081508', '08083508', './src/img.png'),
+('A2002','Tang','CHUNG', 'NAM', '18/01/2000', 'TPHCM', '08081508', '08083508', './src/img.png'),
+('A2003','Tang','CHI CHUNG', 'NAM', '18/01/2000', 'TPHCM', '08081508', '08083508', './src/img.png'),
+('B1001','Tang','CHING', 'NAM', '18/01/2000', 'TPHCM', '08081508', '08083508', './src/img.png');
+
+INSERT INTO KHOATHI VALUES 
+('K18_TT_A2','Tuổi Trẻ', 'A2', '20/12/2021'),
+('K18_TTN_B1','Tuổi Trung Niên', 'B1', '20/12/2021');
+
+INSERT INTO PHONGTHI VALUES
+('A2P01', 'K18_TT_A2', '30'),
+('B1P01', 'K18_TTN_B1', '30');
+
+INSERT INTO PHIEUDUTHI VALUES
+('A2P01', 'Ca sáng', 'A2001'),
+('A2P01', 'Ca sáng', 'A2002'),
+('A2P01', 'Ca sáng', 'A2003'),
+('B1P01', 'Ca tối' , 'B1001');
+
+INSERT INTO KETQUA VALUES
+('A2001', 'K18_TT_A2', '7', '7', '7', '7'),
+('A2002', 'K18_TT_A2', '7', '7', '7', '7' ),
+('A2003', 'K18_TT_A2', '7', '7', '7', '7' ),
+('B1001', 'K18_TTN_B1', '7', '7', '7', '7');
