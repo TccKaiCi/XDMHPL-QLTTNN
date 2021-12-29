@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+using BUS;
+
 namespace Webform.Controllers
 {
     public class HomeController : Controller
@@ -13,18 +15,24 @@ namespace Webform.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult DangKy()
         {
-            ViewBag.Message = "Your application description page.";
-
+            setViewBagDiaDiem();
             return View();
         }
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
 
-            return View();
+
+
+
+
+
+
+
+        public void setViewBagDiaDiem(long? selected = null)
+        {
+            var dao = new DiaDiem();
+            ViewBag.NoiSinh = new SelectList(dao.getAll(), "NoiSinh", "TenDiaDiem", selected);
         }
     }
 }

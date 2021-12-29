@@ -45,6 +45,10 @@
     <None Include="Database.dbml.layout">
       <DependentUpon>Database.dbml</DependentUpon>
     </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="BUS">
@@ -60,10 +64,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Database.dbml</DependentUpon>
     </Compile>
+    <Compile Include="DiaDiemDAL.cs" />
     <Compile Include="KetQuaDAL.cs" />
     <Compile Include="KhoaThiDAL.cs" />
     <Compile Include="PhieuDuThiDAL.cs" />
     <Compile Include="PhongThiDAL.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="ThiSinhDAL.cs" />
   </ItemGroup>
   <ItemGroup>

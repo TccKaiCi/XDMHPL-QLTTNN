@@ -12,39 +12,45 @@ namespace DAL
     {
         public static int getCount()
         {
-            /*
             using (DatabaseDataContext db = new DatabaseDataContext())
             {
-                int count = (from u in db.LOAIHINHDULICHes select u).Count();
-                return 0;
+                int count = (from u in db.THISINHs select u).Count();
+                return count;
             }
-            */
-            return 0;
         }
 
         public static List<ThiSinh> getAll()
         {
             List<ThiSinh> list = new List<ThiSinh>();
-            /*
+
             using (DatabaseDataContext db = new DatabaseDataContext())
             {
-                var result = from u in db.LOAIHINHDULICHes
+                var result = from u in db.THISINHs
                              select new
                              {
-                                 MaLoaiHinh = u.MaLoaiHinh,
-                                 TenLoaiHinh = u.TenLoaiHinh,
+                                 a = u.CMND,
+                                 b = u.HoTen,
+                                 c = u.GioiTinh,
+                                 d = u.NgaySinh,
+                                 e = u.NoiSinh,
+                                 f = u.SDT
                              };
 
                 foreach (var i in result)
                 {
-                    LoaiHinhDuLichModel tour = new LoaiHinhDuLichModel();
+                    ThiSinh model = new ThiSinh();
 
-                    tour.MaLoaiHinh = i.MaLoaiHinh;
-                    tour.TenLoaiHinh = i.TenLoaiHinh;
-                    list.Add(tour);
+                    model.MaCMND = i.a;
+                    model.HoTen = i.b;
+                    model.GioiTinh = i.c;
+                    model.NgaySinh = (DateTime) i.d;
+                    model.NoiSinh = i.e;
+                    model.SDT = (int)i.f;
+
+                    list.Add(model);
                 }
             }
-            */
+
             return list;
         }
     }
