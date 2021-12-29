@@ -4,12 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using BUS;
-
-namespace DAL
+namespace Backend
 {
-    public class ThiSinhDAL
+    public class PhongThiDAL
     {
+
         public static int getCount()
         {
             using (DatabaseDataContext db = new DatabaseDataContext())
@@ -19,9 +18,9 @@ namespace DAL
             }
         }
 
-        public static List<ThiSinh> getAll()
+        public static List<ThiSinhBUS> getAll()
         {
-            List<ThiSinh> list = new List<ThiSinh>();
+            List<ThiSinhBUS> list = new List<ThiSinhBUS>();
 
             using (DatabaseDataContext db = new DatabaseDataContext())
             {
@@ -38,12 +37,12 @@ namespace DAL
 
                 foreach (var i in result)
                 {
-                    ThiSinh model = new ThiSinh();
+                    ThiSinhBUS model = new ThiSinhBUS();
 
-                    model.MaCMND = i.a;
+                    model.CMND = i.a;
                     model.HoTen = i.b;
                     model.GioiTinh = i.c;
-                    model.NgaySinh = (DateTime) i.d;
+                    model.NgaySinh = (DateTime)i.d;
                     model.NoiSinh = i.e;
                     model.SDT = (int)i.f;
 
@@ -52,6 +51,36 @@ namespace DAL
             }
 
             return list;
+        }
+
+
+        public static bool Insert(ThiSinhBUS obj)
+        {
+            try
+            {
+                using (DatabaseDataContext db = new DatabaseDataContext())
+                {
+                    db.THISINHs.InsertOnSubmit(new THISINH()
+                    {
+                        CMND = obj.CMND,
+                        HoTen = obj.HoTen,
+                        GioiTinh = obj.GioiTinh,
+                        NgaySinh = obj.NgaySinh,
+                        NoiSinh = obj.NoiSinh,
+                        SDT = obj.SDT
+                    });
+
+                    db.SubmitChanges();
+
+                }
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
+            }
         }
     }
 }

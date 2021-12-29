@@ -4,19 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using BUS;
-
-namespace DAL
+namespace Backend
 {
     public class DiaDiemDAL
     {
-        public static List<DiaDiem> getAll()
+        public static List<DiaDiemBUS> getAll()
         {
-            List<DiaDiem> list = new List<DiaDiem>();
+            List<DiaDiemBUS> list = new List<DiaDiemBUS>();
 
             using (DatabaseDataContext db = new DatabaseDataContext())
             {
-                var result = from u in db.DIADDIEMs
+                var result = from u in db.DIADIEMs
                              select new
                              {
                                  a = u.MADIADIEM,
@@ -25,7 +23,7 @@ namespace DAL
 
                 foreach (var i in result)
                 {
-                    DiaDiem model = new DiaDiem();
+                    DiaDiemBUS model = new DiaDiemBUS();
 
                     model.MaDiaDiem = i.a;
                     model.TenDiaDiem = i.b;

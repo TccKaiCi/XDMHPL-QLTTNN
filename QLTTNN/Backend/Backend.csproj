@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{33F28DF9-C460-450D-9BCA-98C2CCD72F59}</ProjectGuid>
+    <ProjectGuid>{9BEB9554-F77D-40B2-8E54-B8FF8EDF5825}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>DAL</RootNamespace>
-    <AssemblyName>DAL</AssemblyName>
+    <RootNamespace>Backend</RootNamespace>
+    <AssemblyName>Backend</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -51,30 +51,34 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="BUS">
-      <HintPath>..\BUS\bin\Debug\BUS.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Data.Linq" />
-  </ItemGroup>
-  <ItemGroup>
+    <Compile Include="BUS\DiaDiemBUS.cs" />
+    <Compile Include="BUS\GioiTinhBUS.cs" />
+    <Compile Include="BUS\KhoaThiBUS.cs" />
+    <Compile Include="BUS\PhieuDuThiBUS.cs" />
+    <Compile Include="BUS\PhongThiBUS.cs" />
+    <Compile Include="BUS\ThiSinhBUS.cs" />
+    <Compile Include="DAL\DiaDiemDAL.cs" />
+    <Compile Include="DAL\GioiTinhDAL.cs" />
+    <Compile Include="DAL\KhoaThiDAL.cs" />
+    <Compile Include="DAL\PhieuDuThiDAL.cs" />
+    <Compile Include="DAL\PhongThiDAL.cs" />
+    <Compile Include="DAL\ThiSinhDAL.cs" />
     <Compile Include="Database.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Database.dbml</DependentUpon>
     </Compile>
-    <Compile Include="DiaDiemDAL.cs" />
-    <Compile Include="KetQuaDAL.cs" />
-    <Compile Include="KhoaThiDAL.cs" />
-    <Compile Include="PhieuDuThiDAL.cs" />
-    <Compile Include="PhongThiDAL.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="ThiSinhDAL.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

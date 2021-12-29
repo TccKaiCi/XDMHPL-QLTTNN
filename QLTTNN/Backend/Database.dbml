@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="TrungTamNgoaiNguDB" Class="DatabaseDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-3T163PO\SQLEXPRESS;Initial Catalog=TrungTamNgoaiNguDB;Integrated Security=True" SettingsObjectName="Backend.Properties.Settings" SettingsPropertyName="TrungTamNgoaiNguDBConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.DIADIEM" Member="DIADIEMs">
+    <Type Name="DIADIEM">
+      <Column Name="MADIADIEM" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TENDIADIEM" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="DIADIEM_THISINH" Member="THISINHs" ThisKey="MADIADIEM" OtherKey="NoiSinh" Type="THISINH" />
+    </Type>
+  </Table>
+  <Table Name="dbo.THISINH" Member="THISINHs">
+    <Type Name="THISINH">
+      <Column Name="CMND" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="HoTen" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="GioiTinh" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="NgaySinh" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="NoiSinh" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="SDT" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="THISINH_PHIEUDUTHI" Member="PHIEUDUTHIs" ThisKey="CMND" OtherKey="CMND" Type="PHIEUDUTHI" />
+      <Association Name="DIADIEM_THISINH" Member="DIADIEM" ThisKey="NoiSinh" OtherKey="MADIADIEM" Type="DIADIEM" IsForeignKey="true" />
+      <Association Name="GIOITINH_THISINH" Member="GIOITINH1" ThisKey="GioiTinh" OtherKey="GIOITINH1" Type="GIOITINH" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GIOITINH" Member="GIOITINHs">
+    <Type Name="GIOITINH">
+      <Column Name="GIOITINH" Member="GIOITINH1" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="GIOITINH_THISINH" Member="THISINHs" ThisKey="GIOITINH1" OtherKey="GioiTinh" Type="THISINH" />
+    </Type>
+  </Table>
+  <Table Name="dbo.KETQUA" Member="KETQUAs">
+    <Type Name="KETQUA">
+      <Column Name="SoBaoDanh" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MaKhoaThi" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DiemNghe" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DiemNoi" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DiemDoc" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DiemViet" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="KHOATHI_KETQUA" Member="KHOATHI" ThisKey="MaKhoaThi" OtherKey="MaKhoaThi" Type="KHOATHI" IsForeignKey="true" />
+      <Association Name="PHIEUDUTHI_KETQUA" Member="PHIEUDUTHI" ThisKey="SoBaoDanh" OtherKey="SoBaoDanh" Type="PHIEUDUTHI" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.KHOATHI" Member="KHOATHIs">
+    <Type Name="KHOATHI">
+      <Column Name="MaKhoaThi" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TenKhoaThi" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="TrinhDo" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="NgayThi" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="KHOATHI_KETQUA" Member="KETQUAs" ThisKey="MaKhoaThi" OtherKey="MaKhoaThi" Type="KETQUA" />
+      <Association Name="KHOATHI_PHIEUDUTHI" Member="PHIEUDUTHIs" ThisKey="MaKhoaThi" OtherKey="MaKhoaThi" Type="PHIEUDUTHI" />
+      <Association Name="KHOATHI_PHONGTHI" Member="PHONGTHIs" ThisKey="MaKhoaThi" OtherKey="MaKhoaThi" Type="PHONGTHI" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PHIEUDUTHI" Member="PHIEUDUTHIs">
+    <Type Name="PHIEUDUTHI">
+      <Column Name="SoBaoDanh" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TenPhongThi" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CMND" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CaThi" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="MaKhoaThi" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="PHIEUDUTHI_KETQUA" Member="KETQUAs" ThisKey="SoBaoDanh" OtherKey="SoBaoDanh" Type="KETQUA" />
+      <Association Name="THISINH_PHIEUDUTHI" Member="THISINH" ThisKey="CMND" OtherKey="CMND" Type="THISINH" IsForeignKey="true" />
+      <Association Name="KHOATHI_PHIEUDUTHI" Member="KHOATHI" ThisKey="MaKhoaThi" OtherKey="MaKhoaThi" Type="KHOATHI" IsForeignKey="true" />
+      <Association Name="PHONGTHI_PHIEUDUTHI" Member="PHONGTHI" ThisKey="TenPhongThi" OtherKey="TenPhongThi" Type="PHONGTHI" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PHONGTHI" Member="PHONGTHIs">
+    <Type Name="PHONGTHI">
+      <Column Name="TenPhongThi" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MaKhoaThi" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="SoLuong" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="PHONGTHI_PHIEUDUTHI" Member="PHIEUDUTHIs" ThisKey="TenPhongThi" OtherKey="TenPhongThi" Type="PHIEUDUTHI" />
+      <Association Name="KHOATHI_PHONGTHI" Member="KHOATHI" ThisKey="MaKhoaThi" OtherKey="MaKhoaThi" Type="KHOATHI" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
