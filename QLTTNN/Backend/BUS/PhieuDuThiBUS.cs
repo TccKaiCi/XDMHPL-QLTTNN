@@ -16,14 +16,29 @@ namespace Backend
         public string MaKhoaThi { get; set; }
 
 
-
         public List<PhieuDuThiBUS> getAll() => PhieuDuThiDAL.getAll();
         public static PhieuDuThiBUS getObj(string CMND) => PhieuDuThiDAL.getAll(CMND);
         public static List<PhieuDuThiBUS> getAllStatic() => PhieuDuThiDAL.getAll();
         public Boolean Insert() => PhieuDuThiDAL.Insert(this);
 
 
+        public static string getNextSBD(List<PhieuDuThiBUS> list, string type)
+        {
+            int count = 1;
 
-        
+            list.ForEach(x => {
+                if (x.SoBaoDanh.Contains(type))
+                {
+                    count++;
+                }
+            });
+
+            if (count < 10)
+                return type + "00"  + count;
+            else
+                return type + "0"  + count;
+        }
+
+
     }
 }

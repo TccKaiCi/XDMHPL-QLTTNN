@@ -9,42 +9,27 @@ namespace Backend
     public class PhongThiDAL
     {
 
-        public static int getCount()
+        public static List<PhongThiBUS> getAll()
         {
-            using (DatabaseDataContext db = new DatabaseDataContext())
-            {
-                int count = (from u in db.THISINHs select u).Count();
-                return count;
-            }
-        }
-
-        public static List<ThiSinhBUS> getAll()
-        {
-            List<ThiSinhBUS> list = new List<ThiSinhBUS>();
+            List<PhongThiBUS> list = new List<PhongThiBUS>();
 
             using (DatabaseDataContext db = new DatabaseDataContext())
             {
-                var result = from u in db.THISINHs
+                var result = from u in db.PHONGTHIs
                              select new
                              {
-                                 a = u.CMND,
-                                 b = u.HoTen,
-                                 c = u.GioiTinh,
-                                 d = u.NgaySinh,
-                                 e = u.NoiSinh,
-                                 f = u.SDT
+                                 a = u.TenPhongThi,
+                                 b = u.MaKhoaThi,
+                                 c = u.SoLuong
                              };
 
                 foreach (var i in result)
                 {
-                    ThiSinhBUS model = new ThiSinhBUS();
+                    PhongThiBUS model = new PhongThiBUS();
 
-                    model.CMND = i.a;
-                    model.HoTen = i.b;
-                    model.GioiTinh = i.c;
-                    model.NgaySinh = (DateTime)i.d;
-                    model.NoiSinh = i.e;
-                    model.SDT = (int)i.f;
+                    model.TenPhongThi = i.a;
+                    model.MaKhoaThi = i.b;
+                    model.SoLuong = i.c;
 
                     list.Add(model);
                 }
@@ -54,33 +39,5 @@ namespace Backend
         }
 
 
-        public static bool Insert(ThiSinhBUS obj)
-        {
-            try
-            {
-                using (DatabaseDataContext db = new DatabaseDataContext())
-                {
-                    db.THISINHs.InsertOnSubmit(new THISINH()
-                    {
-                        CMND = obj.CMND,
-                        HoTen = obj.HoTen,
-                        GioiTinh = obj.GioiTinh,
-                        NgaySinh = obj.NgaySinh,
-                        NoiSinh = obj.NoiSinh,
-                        SDT = obj.SDT
-                    });
-
-                    db.SubmitChanges();
-
-                }
-
-                return true;
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-                return false;
-            }
-        }
     }
 }

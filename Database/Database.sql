@@ -22,7 +22,6 @@ CREATE TABLE PHIEUDUTHI (
 	SoBaoDanh NVARCHAR(50) NOT NULL,
 	TenPhongThi NVARCHAR(50) NOT NULL,
 	CMND NVARCHAR(50) NOT NULL,
-	CaThi NVARCHAR(50) NOT NULL,
 	MaKhoaThi NVARCHAR(50) NOT NULL
 )
 
@@ -30,6 +29,7 @@ CREATE TABLE KHOATHI (
 	MaKhoaThi NVARCHAR(50) NOT NULL,
 	TenKhoaThi NVARCHAR(50) NOT NULL,
 	TrinhDo NVARCHAR(50) NOT NULL,
+	CaThi NVARCHAR(50) NOT NULL,
 	NgayThi datetime NOT NULL
 )
 
@@ -126,18 +126,18 @@ INSERT INTO THISINH VALUES
 ('232323232','Tang CHING', 'NAM', '2022-01-04 00:00:00.000', 'DD7', '0232323232');
 
 INSERT INTO KHOATHI VALUES 
-('K18_TT_A2','Tuổi Trẻ', 'A2', '2022-01-04 00:00:00.000'),
-('K18_TTN_B1','Tuổi Trung Niên', 'B1', '2022-01-04 00:00:00.000');
+('K18_TT_A2','Khoa 18 A2', 'A2', 'Ca sáng', '2022-01-04 00:00:00.000'),
+('K18_TTN_B1','Khoa 17 B1', 'B1','Ca sáng', '2022-01-04 00:00:00.000');
 
 INSERT INTO PHONGTHI VALUES
 ('A2P01', 'K18_TT_A2', '30'),
 ('B1P01', 'K18_TTN_B1', '30');
 
 INSERT INTO PHIEUDUTHI VALUES
-('A2001' ,'A2P01','123456789' ,'Ca sáng', 'K18_TT_A2'),
-('A2002' ,'A2P01','987654321' ,'Ca sáng', 'K18_TT_A2'),
-('A2003' ,'A2P01','121212121' ,'Ca sáng', 'K18_TT_A2'),
-('B1001' ,'B1P01','232323232' ,'Ca tối' , 'K18_TTN_B1');
+('A2001' ,'A2P01','123456789' , 'K18_TT_A2'),
+('A2002' ,'A2P01','987654321' , 'K18_TT_A2'),
+('A2003' ,'A2P01','121212121' , 'K18_TT_A2'),
+('B1001' ,'B1P01','232323232' , 'K18_TTN_B1');
 
 INSERT INTO KETQUA VALUES
 ('A2001', 'K18_TT_A2', '7', '7', '7', '7'),
@@ -154,3 +154,10 @@ select * from phieuduthi
 select * from phongthi
 select * from thisinh
 select * from DIADIEM
+
+
+select * from ketqua
+select * from thisinh
+select * from phieuduthi
+
+select * from thisinh, phieuduthi where thisinh.CMND = PHIEUDUTHI.CMND and THISINH.HoTen = 'Tang CHUNG'

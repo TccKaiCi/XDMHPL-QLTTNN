@@ -19,6 +19,7 @@ namespace Webform.Controllers
         {
             setViewBagDiaDiem();
             setViewBagGioiTinh();
+            setViewBagKhoaThi();
             return View();
         }
 
@@ -36,6 +37,9 @@ namespace Webform.Controllers
             }
         }
 
+
+        //======================================================================================================
+
         public ActionResult TimKiemThongTin()
         {
             return View();
@@ -52,13 +56,68 @@ namespace Webform.Controllers
             var con = new ThiSinhBUS();      
             var edit = ThiSinhBUS.findBy_HoTen_SDT(con.getAll(), hoten, sdt);
 
-            //return RedirectToAction("Index", new { id = edit.GioiTinh });
             return View(edit);
         }
 
 
+        //======================================================================================================
+        public ActionResult GiayChungNhan()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult GiayChungNhan(ThiSinhBUS model)
+        {
+            return RedirectToAction("ThongTinGiayChungNhan", new { sbd = model.SoBaoDanh });
+        }
+
+        public ActionResult ThongTinGiayChungNhan(string sbd)
+        {
+            var con = new ThiSinhBUS();
+            var edit = ThiSinhBUS.findBy_SBD(con.getAll(), sbd);
+
+            return View(edit);
+        }
 
 
+        //======================================================================================================
+        public ActionResult DanhSachThiSinh()
+        {
+            setViewBagKhoaThi();
+            setViewBagPhongThi();
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult DanhSachThiSinh(ThiSinhBUS model)
+        {
+            return RedirectToAction("DanhSachThiSinh_KetQua", new { khoathi = model.MaKhoaThi, phongthi = model.TenPhongThi });
+        }
+
+        public ActionResult DanhSachThiSinh_KetQua(string khoathi, string phongthi)
+        {
+            var con = new ThiSinhBUS().getAll();
+            var edit = ThiSinhBUS.findBy_MaKhoaThi_TenPhongThi(con, khoathi, phongthi);
+
+            return View(edit);
+        }
+
+        //======================================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+        //======================================================================================================
         public void setViewBagDiaDiem(long? selected = null)
         {
             var dao = new DiaDiemBUS();
@@ -71,5 +130,17 @@ namespace Webform.Controllers
             ViewBag.GioiTinh = new SelectList(dao.getAll(), "GioiTinh", "GioiTinh", selected);
         }
 
+        public void setViewBagKhoaThi(long? selected = null)
+        {
+            var dao = new KhoaThiBUS();
+            ViewBag.MaKhoaThi = new SelectList(dao.getAll(), "MaKhoaThi", "TenKhoaThi", selected);
+        }
+
+        public void setViewBagPhongThi(long? selected = null)
+        {
+            var dao = new PhongThiBUS();
+            ViewBag.TenPhongThi = new SelectList(dao.getAll(), "TenPhongThi", "TenPhongThi", selected);
+        }
+        //======================================================================================================
     }
 }

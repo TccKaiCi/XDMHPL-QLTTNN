@@ -169,6 +169,11 @@
     <Content Include="Views\Home\DangKy.cshtml" />
     <Content Include="Views\Home\TimKiemThongTin.cshtml" />
     <Content Include="Views\Home\ThongTinTimKiem.cshtml" />
+    <Content Include="Views\Home\GiayChungNhan.cshtml" />
+    <Content Include="Views\Home\ThongTinGiayChungNhan.cshtml" />
+    <Content Include="Views\Home\DanhSachThiSinh.cshtml" />
+    <Content Include="Views\Home\DanhSachThiSinh_KetQua.cshtml" />
+    <Content Include="Views\Home\ThongKe.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

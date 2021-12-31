@@ -912,6 +912,8 @@ namespace Backend
 		
 		private string _TrinhDo;
 		
+		private string _CaThi;
+		
 		private System.DateTime _NgayThi;
 		
 		private EntitySet<KETQUA> _KETQUAs;
@@ -930,6 +932,8 @@ namespace Backend
     partial void OnTenKhoaThiChanged();
     partial void OnTrinhDoChanging(string value);
     partial void OnTrinhDoChanged();
+    partial void OnCaThiChanging(string value);
+    partial void OnCaThiChanged();
     partial void OnNgayThiChanging(System.DateTime value);
     partial void OnNgayThiChanged();
     #endregion
@@ -998,6 +1002,26 @@ namespace Backend
 					this._TrinhDo = value;
 					this.SendPropertyChanged("TrinhDo");
 					this.OnTrinhDoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CaThi", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string CaThi
+		{
+			get
+			{
+				return this._CaThi;
+			}
+			set
+			{
+				if ((this._CaThi != value))
+				{
+					this.OnCaThiChanging(value);
+					this.SendPropertyChanging();
+					this._CaThi = value;
+					this.SendPropertyChanged("CaThi");
+					this.OnCaThiChanged();
 				}
 			}
 		}
@@ -1130,8 +1154,6 @@ namespace Backend
 		
 		private string _CMND;
 		
-		private string _CaThi;
-		
 		private string _MaKhoaThi;
 		
 		private EntitySet<KETQUA> _KETQUAs;
@@ -1152,8 +1174,6 @@ namespace Backend
     partial void OnTenPhongThiChanged();
     partial void OnCMNDChanging(string value);
     partial void OnCMNDChanged();
-    partial void OnCaThiChanging(string value);
-    partial void OnCaThiChanged();
     partial void OnMaKhoaThiChanging(string value);
     partial void OnMaKhoaThiChanged();
     #endregion
@@ -1231,26 +1251,6 @@ namespace Backend
 					this._CMND = value;
 					this.SendPropertyChanged("CMND");
 					this.OnCMNDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CaThi", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string CaThi
-		{
-			get
-			{
-				return this._CaThi;
-			}
-			set
-			{
-				if ((this._CaThi != value))
-				{
-					this.OnCaThiChanging(value);
-					this.SendPropertyChanging();
-					this._CaThi = value;
-					this.SendPropertyChanged("CaThi");
-					this.OnCaThiChanged();
 				}
 			}
 		}

@@ -30,7 +30,8 @@ namespace Backend
                                  a = u.MaKhoaThi,
                                  b = u.TenKhoaThi,
                                  c = u.TrinhDo,
-                                 d = u.NgayThi
+                                 d = u.NgayThi,
+                                 e = u.CaThi
                              };
 
                 foreach (var i in result)
@@ -41,6 +42,7 @@ namespace Backend
                     model.TenKhoaThi = i.b;
                     model.TrinhDo = i.c;
                     model.NgayThi = (DateTime)i.d;
+                    model.CaThi = i.e;
 
                     list.Add(model);
                 }
@@ -61,6 +63,7 @@ namespace Backend
                         MaKhoaThi = obj.MaKhoaThi,
                         TenKhoaThi = obj.TenKhoaThi,
                         TrinhDo = obj.TrinhDo,
+                        CaThi = obj.CaThi,
                         NgayThi = obj.NgayThi
                     });
 

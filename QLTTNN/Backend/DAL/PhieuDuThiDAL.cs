@@ -28,7 +28,6 @@ namespace Backend
                              {
                                  a = u.TenPhongThi,
                                  b = u.CMND,
-                                 c = u.CaThi,
                                  d = u.SoBaoDanh,
                                  e = u.MaKhoaThi
                              };
@@ -39,7 +38,6 @@ namespace Backend
 
                     model.TenPhongThi = i.a;
                     model.CMND = i.b;
-                    model.CaThi = i.c;
                     model.SoBaoDanh = i.d;
                     model.MaKhoaThi = i.e;
 
@@ -60,7 +58,6 @@ namespace Backend
                              {
                                  a = u.TenPhongThi,
                                  b = u.CMND,
-                                 c = u.CaThi,
                                  d = u.SoBaoDanh,
                                  e = u.MaKhoaThi
                              };
@@ -71,7 +68,6 @@ namespace Backend
 
                     model.TenPhongThi = i.a;
                     model.CMND = i.b;
-                    model.CaThi = i.c;
                     model.SoBaoDanh = i.d;
                     model.MaKhoaThi = i.e;
 
@@ -92,7 +88,6 @@ namespace Backend
                     {
                         CMND = obj.CMND,
                         TenPhongThi = obj.TenPhongThi,
-                        CaThi = obj.CaThi,
                         SoBaoDanh = obj.SoBaoDanh
                     });
 

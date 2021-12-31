@@ -43,6 +43,7 @@
       <Column Name="MaKhoaThi" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="TenKhoaThi" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="TrinhDo" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CaThi" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="NgayThi" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Association Name="KHOATHI_KETQUA" Member="KETQUAs" ThisKey="MaKhoaThi" OtherKey="MaKhoaThi" Type="KETQUA" />
       <Association Name="KHOATHI_PHIEUDUTHI" Member="PHIEUDUTHIs" ThisKey="MaKhoaThi" OtherKey="MaKhoaThi" Type="PHIEUDUTHI" />
@@ -54,7 +55,6 @@
       <Column Name="SoBaoDanh" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="TenPhongThi" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="CMND" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="CaThi" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="MaKhoaThi" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Association Name="PHIEUDUTHI_KETQUA" Member="KETQUAs" ThisKey="SoBaoDanh" OtherKey="SoBaoDanh" Type="KETQUA" />
       <Association Name="THISINH_PHIEUDUTHI" Member="THISINH" ThisKey="CMND" OtherKey="CMND" Type="THISINH" IsForeignKey="true" />

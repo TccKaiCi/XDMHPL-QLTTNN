@@ -12,5 +12,6 @@ namespace Backend
         public string GIOITINH { get; set; }
 
         public List<GioiTinhBUS> getAll() => GioiTinhDAL.getAll();
+        public static List<GioiTinhBUS> getAllStatic() => GioiTinhDAL.getAll();
     }
 }

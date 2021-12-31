@@ -13,6 +13,20 @@ namespace Backend
         public string MaKhoaThi { get; set; }
         public int SoLuong { get; set; }
 
+        public static List<PhongThiBUS> GetAll() => PhongThiDAL.getAll();
+        public List<PhongThiBUS> getAll() => PhongThiDAL.getAll();
 
+        public static string getPhongThiByMaKhoaThi(List<PhongThiBUS> list, string ma)
+        {
+            string s = null;
+            list.ForEach(x => {
+                if (x.MaKhoaThi.Contains(ma))
+                {
+                    s = x.TenPhongThi;
+                }
+            });
+
+            return s;
+        }
     }
 }

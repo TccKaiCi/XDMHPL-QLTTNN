@@ -25,7 +25,9 @@ namespace Backend
             {
                 var result = from u in db.THISINHs
                              from v in db.PHIEUDUTHIs
-                             where u.CMND == v.CMND
+                             from w in db.KETQUAs
+                             where u.CMND == v.CMND &
+                             v.SoBaoDanh == w.SoBaoDanh
                              select new
                              {
                                  a = u.CMND,
@@ -33,8 +35,17 @@ namespace Backend
                                  c = u.GioiTinh,
                                  d = u.NgaySinh,
                                  e = u.NoiSinh,
-                                 f = u.SDT
+                                 f = u.SDT,
 
+                                 g = v.SoBaoDanh,
+                                 h = v.TenPhongThi,
+                                 i = v.CMND,
+                                 k = v.MaKhoaThi,
+
+                                 l = w.DiemDoc,
+                                 m = w.DiemNghe,
+                                 n = w.DiemNoi,
+                                 o = w.DiemViet
                              };
 
                 foreach (var i in result)
@@ -48,65 +59,20 @@ namespace Backend
                     model.NoiSinh = i.e;
                     model.SDT = i.f;
 
-                    model.PhieuDuThiBUS = PhieuDuThiBUS.getObj(model.CMND);
+                    model.SoBaoDanh = i.g;
+                    model.TenPhongThi = i.h;
+                    model.MaKhoaThi = i.k;
+
+                    model.diemDoc = i.l;
+                    model.diemNghe = i.m;
+                    model.diemNoi = i.n;
+                    model.diemViet = i.o;
 
                     list.Add(model);
                 }
             }
 
             return list;
-        }
-
-        public static ThiSinhBUS getAll(string hoten, string sdt)
-        {
-            int sdtx = Int32.Parse(sdt);
-
-            using (DatabaseDataContext db = new DatabaseDataContext())
-            {
-                var result = from u in db.THISINHs
-                             from v in db.PHIEUDUTHIs
-                             where u.CMND == v.CMND &
-                             u.HoTen == hoten &
-                             u.SDT == sdtx
-                             select new
-                             {
-                                 a = u.CMND,
-                                 b = u.HoTen,
-                                 c = u.GioiTinh,
-                                 d = u.NgaySinh,
-                                 e = u.NoiSinh,
-                                 f = u.SDT,
-
-                                 g = v.SoBaoDanh,
-                                 h = v.TenPhongThi,
-                                 i = v.CMND,
-                                 j = v.CaThi,
-                                 k = v.MaKhoaThi
-
-                             };
-
-                foreach (var i in result)
-                {
-                    ThiSinhBUS model = new ThiSinhBUS();
-
-                    model.CMND = i.a;
-                    model.HoTen = i.b;
-                    model.GioiTinh = i.c;
-                    model.NgaySinh = (DateTime)i.d;
-                    model.NoiSinh = i.e;
-                    model.SDT = (int)i.f;
-
-                    model.PhieuDuThiBUS.SoBaoDanh = i.g;
-                    model.PhieuDuThiBUS.TenPhongThi = i.h;
-                    model.PhieuDuThiBUS.CMND = i.i;
-                    model.PhieuDuThiBUS.CaThi = i.j;
-                    model.PhieuDuThiBUS.MaKhoaThi = i.k;
-
-                    return model;
-                }
-            }
-            return null;
-
         }
 
         public static bool Insert(ThiSinhBUS obj)
@@ -127,6 +93,29 @@ namespace Backend
 
                     db.SubmitChanges();
 
+                    // Phieu Du Thi
+                    db.PHIEUDUTHIs.InsertOnSubmit(new PHIEUDUTHI()
+                    {
+                        CMND = obj.CMND,
+                        SoBaoDanh = obj.SoBaoDanh,
+                        TenPhongThi = obj.TenPhongThi,
+                        MaKhoaThi = obj.MaKhoaThi
+                    });
+
+                    // Diem
+                    db.KETQUAs.InsertOnSubmit(new KETQUA()
+                    {
+                        SoBaoDanh = obj.SoBaoDanh,
+                        MaKhoaThi = obj.MaKhoaThi,
+                        DiemDoc = 0,
+                        DiemNghe = 0,
+                        DiemViet = 0,
+                        DiemNoi = 0
+                    });
+
+                    db.SubmitChanges();
+
+                    db.SubmitChanges();
                 }
 
                 return true;

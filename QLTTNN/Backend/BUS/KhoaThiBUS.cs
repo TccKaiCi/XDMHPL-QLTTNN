@@ -13,6 +13,7 @@ namespace Backend
         public string MaKhoaThi { get; set; }
         public string TenKhoaThi { get; set; }
         public string TrinhDo { get; set; }
+        public string CaThi { get; set; }
         public DateTime NgayThi { get; set; }
 
         public List<KhoaThiBUS> getAll() => KhoaThiDAL.getAll();
@@ -20,5 +21,18 @@ namespace Backend
         public int getCount() => KhoaThiDAL.getCount();
         public Boolean Insert() => KhoaThiDAL.Insert(this);
 
+
+        public static string getTrinhDoByKhoa(List<KhoaThiBUS> list,string ma)
+        {
+            string s = null;
+            list.ForEach(x => {
+                if (x.MaKhoaThi.Contains(ma))
+                {
+                    s = x.TrinhDo;
+                }
+            });
+
+            return s;
+        }
     }
 }
