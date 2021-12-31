@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Backend.ThiSinhBUS>
+
+@{
+	ViewBag.Title = "DanhSachThiSinh_KetQua";
+}
+
+<h2>DanhSachThiSinh_KetQua</h2>
+
+
+<table class="table">
+	<tr>
+		<th>Số báo danh</th>
+		<th>Họ và tên</th>
+		<th>Giới tính</th>
+		<th>Số điện thoại</th>
+
+		<th></th>
+	</tr>
+
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td>@Html.DisplayFor(modelItem => item.SoBaoDanh)</td>
+			<td>@Html.DisplayFor(modelItem => item.HoTen)</td>
+			<td>@Html.DisplayFor(modelItem => item.GioiTinh)</td>
+			<td>@Html.DisplayFor(modelItem => item.SDT)</td>
+
+			<td>
+				@Html.ActionLink("Thông tin thí sinh", "ThongTinTimKiem", new { hoten = item.HoTen, sdt = item.SDT }) |
+				@Html.ActionLink("Giấy chứng nhận", "ThongTinGiayChungNhan", new { sbd = item.SoBaoDanh }) 
+			</td>
+		</tr>
+	}
+
+</table>
