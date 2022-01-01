@@ -50,7 +50,23 @@ namespace Winform
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Winform.TimKiemThongTinThiSinh c = new Winform.TimKiemThongTinThiSinh();
+            TimKiemThongTinThiSinh.TimKiemThongTIn c = new TimKiemThongTinThiSinh.TimKiemThongTIn();
+            this.Hide();
+            c.ShowDialog();
+            this.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            QLPhongThi c = new QLPhongThi();
+            this.Hide();
+            c.ShowDialog();
+            this.Close();
+        }
+
+        private void button4_Click_1(object sender, EventArgs e)
+        {
+            QLKhoaThi c = new QLKhoaThi();
             this.Hide();
             c.ShowDialog();
             this.Close();

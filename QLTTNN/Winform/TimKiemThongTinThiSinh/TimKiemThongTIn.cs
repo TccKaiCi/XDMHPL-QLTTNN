@@ -8,10 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using Backend;
+
 namespace Winform.TimKiemThongTinThiSinh
 {
     public partial class TimKiemThongTIn : Form
     {
+
+        List<ThiSinhBUS> listTS;
+
         public TimKiemThongTIn()
         {
             InitializeComponent();
@@ -50,7 +55,20 @@ namespace Winform.TimKiemThongTinThiSinh
             CacHamCheck.isText_NULL(textBox2.Text))
                 {
                 MessageBox.Show("Vui lòng điển đầy đủ thông tin");
-                }
+                } else
+            {
+                listTS = ThiSinhBUS.findBy_HoTen_SDT_LIST(ThiSinhBUS.getAllStatic(), textBox1.Text, textBox2.Text);
+
+                dataGridView1.DataSource = listTS;
+
+                dataGridView1.Columns["CMND"].Visible = false;
+                dataGridView1.Columns["SDT"].Visible = false;
+                dataGridView1.Columns["NgaySinh"].Visible = false;
+                dataGridView1.Columns["MaKhoaThi"].Visible = false;
+                dataGridView1.Columns["NoiSinh"].Visible = false;
+
+                dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            }
         }
     }
 }

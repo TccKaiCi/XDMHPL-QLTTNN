@@ -26,8 +26,10 @@ namespace Backend
                 var result = from u in db.THISINHs
                              from v in db.PHIEUDUTHIs
                              from w in db.KETQUAs
+                             from x in db.KHOATHIs
                              where u.CMND == v.CMND &
-                             v.SoBaoDanh == w.SoBaoDanh
+                             v.SoBaoDanh == w.SoBaoDanh &
+                             v.MaKhoaThi == x.MaKhoaThi
                              select new
                              {
                                  a = u.CMND,
@@ -40,6 +42,7 @@ namespace Backend
                                  g = v.SoBaoDanh,
                                  h = v.TenPhongThi,
                                  i = v.CMND,
+                                 j = x.CaThi,
                                  k = v.MaKhoaThi,
 
                                  l = w.DiemDoc,
@@ -61,6 +64,7 @@ namespace Backend
 
                     model.SoBaoDanh = i.g;
                     model.TenPhongThi = i.h;
+                    model.CaThi = i.j;
                     model.MaKhoaThi = i.k;
 
                     model.diemDoc = i.l;

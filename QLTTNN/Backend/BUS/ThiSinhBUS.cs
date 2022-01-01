@@ -24,6 +24,7 @@ namespace Backend
             SoBaoDanh = PhieuDuThiBUS.getNextSBD(PhieuDuThiBUS.getAllStatic()
                 , KhoaThiBUS.getTrinhDoByKhoa(KhoaThiBUS.getAllStatic(), MaKhoaThi) );
             TenPhongThi = PhongThiBUS.getPhongThiByMaKhoaThi(PhongThiBUS.GetAll(), MaKhoaThi);
+            CaThi = "Ca sáng";
 
             return ThiSinhDAL.Insert(this);
         }
@@ -58,6 +59,34 @@ namespace Backend
             });
 
             return res;
+        }
+
+        public static List<ThiSinhBUS> findBy_HoTen_SDT_LIST(List<ThiSinhBUS> list, string hoten, string sdt)
+        {
+            List<ThiSinhBUS> resList = new List<ThiSinhBUS>();
+
+            list.ForEach(x => {
+                if (x.HoTen.Equals(hoten) && x.SDT == Int32.Parse(sdt))
+                {
+                    ThiSinhBUS res = new ThiSinhBUS();
+
+                    res.HoTen = x.HoTen;
+                    res.MaKhoaThi = x.MaKhoaThi;
+                    res.SoBaoDanh = x.SoBaoDanh;
+                    res.TenPhongThi = x.TenPhongThi;
+                    res.GioiTinh = x.GioiTinh;
+                    res.diemViet = x.diemViet;
+                    res.diemNoi = x.diemNoi;
+                    res.diemNghe = x.diemNghe;
+                    res.diemDoc = x.diemDoc;
+                    res.CaThi = x.CaThi;
+                    res.SDT = x.SDT;
+
+                    resList.Add(res);
+                }
+            });
+
+            return resList;
         }
 
         public static ThiSinhBUS findBy_SBD(List<ThiSinhBUS> list, string sbd)

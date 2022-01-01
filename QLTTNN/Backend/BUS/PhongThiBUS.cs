@@ -13,8 +13,19 @@ namespace Backend
         public string MaKhoaThi { get; set; }
         public int SoLuong { get; set; }
 
+
+
+        public string TenKhoaThi { get; set; }
+        public string TrinhDo { get; set; }
+        public string CaThi { get; set; }
+        public DateTime NgayThi { get; set; }
+
+
         public static List<PhongThiBUS> GetAll() => PhongThiDAL.getAll();
         public List<PhongThiBUS> getAll() => PhongThiDAL.getAll();
+        public Boolean Insert() => PhongThiDAL.Insert(this);
+        public Boolean Update() => PhongThiDAL.Update(this);
+        public Boolean Delete() => PhongThiDAL.Delete(this);
 
         public static string getPhongThiByMaKhoaThi(List<PhongThiBUS> list, string ma)
         {

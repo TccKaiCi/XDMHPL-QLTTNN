@@ -68,6 +68,7 @@ namespace Winform
             this.label2.Size = new System.Drawing.Size(90, 24);
             this.label2.TabIndex = 2;
             this.label2.Text = "Họ và tên";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label3
             // 
@@ -89,6 +90,7 @@ namespace Winform
             this.label4.Size = new System.Drawing.Size(94, 24);
             this.label4.TabIndex = 4;
             this.label4.Text = "Ngày sinh";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label5
             // 
@@ -135,6 +137,7 @@ namespace Winform
             this.textBox_HT.Name = "textBox_HT";
             this.textBox_HT.Size = new System.Drawing.Size(320, 29);
             this.textBox_HT.TabIndex = 9;
+            this.textBox_HT.TextChanged += new System.EventHandler(this.textBox_HT_TextChanged);
             // 
             // textBox_SDT
             // 
@@ -202,6 +205,7 @@ namespace Winform
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(320, 29);
             this.dateTimePicker1.TabIndex = 15;
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // button2
             // 

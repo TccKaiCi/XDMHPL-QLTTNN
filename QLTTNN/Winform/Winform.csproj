@@ -70,6 +70,42 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuanLyKhoaThi\QLKhoaThi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuanLyKhoaThi\QLKhoaThi.Designer.cs">
+      <DependentUpon>QLKhoaThi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QuanLyKhoaThi\ThemKhoaThi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuanLyKhoaThi\ThemKhoaThi.Designer.cs">
+      <DependentUpon>ThemKhoaThi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QuanLyKhoaThi\XoaKhoaThi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuanLyKhoaThi\XoaKhoaThi.Designer.cs">
+      <DependentUpon>XoaKhoaThi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QuanLyPhongThi\QLPhongThi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuanLyPhongThi\QLPhongThi.Designer.cs">
+      <DependentUpon>QLPhongThi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QuanLyPhongThi\ThemPhongThi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuanLyPhongThi\ThemPhongThi.Designer.cs">
+      <DependentUpon>ThemPhongThi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QuanLyPhongThi\XoaPhongThi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuanLyPhongThi\XoaPhongThi.Designer.cs">
+      <DependentUpon>XoaPhongThi.cs</DependentUpon>
+    </Compile>
     <Compile Include="TimKiemThongTinThiSinh\TimKiemThongTIn.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,6 +130,24 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="QuanLyKhoaThi\QLKhoaThi.resx">
+      <DependentUpon>QLKhoaThi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuanLyKhoaThi\ThemKhoaThi.resx">
+      <DependentUpon>ThemKhoaThi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuanLyKhoaThi\XoaKhoaThi.resx">
+      <DependentUpon>XoaKhoaThi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuanLyPhongThi\QLPhongThi.resx">
+      <DependentUpon>QLPhongThi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuanLyPhongThi\ThemPhongThi.resx">
+      <DependentUpon>ThemPhongThi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuanLyPhongThi\XoaPhongThi.resx">
+      <DependentUpon>XoaPhongThi.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TimKiemThongTinThiSinh\TimKiemThongTIn.resx">
       <DependentUpon>TimKiemThongTIn.cs</DependentUpon>
     </EmbeddedResource>
@@ -112,7 +166,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="NhapDiemChoPhongThi\" />
-    <Folder Include="QuanLyPhongThi\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
