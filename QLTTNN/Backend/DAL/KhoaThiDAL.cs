@@ -78,5 +78,25 @@ namespace Backend
                 return false;
             }
         }
+
+        public static bool Delete(KhoaThiBUS obj)
+        {
+            try
+            {
+                using (DatabaseDataContext db = new DatabaseDataContext())
+                {
+                    var gia = db.KHOATHIs.Where(p => p.MaKhoaThi.Equals(obj.MaKhoaThi)).SingleOrDefault();
+                    db.KHOATHIs.DeleteOnSubmit(gia);
+                    db.SubmitChanges();
+                }
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
+            }
+        }
     }
 }

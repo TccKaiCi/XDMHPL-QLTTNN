@@ -19,8 +19,14 @@ namespace Backend
         public List<KhoaThiBUS> getAll() => KhoaThiDAL.getAll();
         public static List<KhoaThiBUS> getAllStatic() => KhoaThiDAL.getAll();
         public int getCount() => KhoaThiDAL.getCount();
-        public Boolean Insert() => KhoaThiDAL.Insert(this);
+        public static string getRandomMa()
+        {
+            Random r = new Random();
+            return "K" + r.Next(1, 1000000);
+        }
 
+        public Boolean Insert() => KhoaThiDAL.Insert(this);
+        public Boolean Delete() => KhoaThiDAL.Delete(this);
 
         public static string getTrinhDoByKhoa(List<KhoaThiBUS> list,string ma)
         {
@@ -33,6 +39,19 @@ namespace Backend
             });
 
             return s;
+        }
+
+        public static string getTrinhDo_Ma(List<KhoaThiBUS> list,string key)
+        {
+            string res = "";
+            list.ForEach(x => {
+                if (x.MaKhoaThi.Equals(key))
+                {
+                    res = x.TrinhDo;
+                }
+            });
+
+            return res;
         }
     }
 }
