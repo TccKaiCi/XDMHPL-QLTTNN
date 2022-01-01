@@ -10,6 +10,7 @@ namespace Backend
     {
         public PhieuDuThiBUS() { }
         public string SoBaoDanh { get; set; }
+        public string MaPhongThi { get; set; }
         public string TenPhongThi { get; set; }
         public string CMND { get; set; }
         public string CaThi { get; set; }

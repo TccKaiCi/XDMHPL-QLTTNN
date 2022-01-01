@@ -56,7 +56,9 @@ namespace Winform
                 PhongThiBUS model = new PhongThiBUS();
 
                 //Tên trình độ + P+ số TT
-                model.TenPhongThi = KhoaThiBUS.getTrinhDo_Ma(listKT, comboBox1.SelectedValue.ToString()) + "P"+ textBox_Ten.Text;
+                Random r = new Random();
+                model.TenPhongThi = KhoaThiBUS.getTrinhDo_Ma(listKT, comboBox1.SelectedValue.ToString()) + "P" + textBox_Ten.Text;
+                model.MaPhongThi = "P" + r.Next(1, 1000000) + model.TenPhongThi;
                 model.SoLuong = Int32.Parse( textBox_So.Text );
                 model.MaKhoaThi = comboBox1.SelectedValue.ToString();
 

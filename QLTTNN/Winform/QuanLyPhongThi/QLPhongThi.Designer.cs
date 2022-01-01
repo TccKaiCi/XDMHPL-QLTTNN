@@ -68,6 +68,7 @@ namespace Winform
             this.buttonMod.TabIndex = 12;
             this.buttonMod.Text = "Sửa";
             this.buttonMod.UseVisualStyleBackColor = true;
+            this.buttonMod.Click += new System.EventHandler(this.buttonMod_Click);
             // 
             // buttonDelete
             // 

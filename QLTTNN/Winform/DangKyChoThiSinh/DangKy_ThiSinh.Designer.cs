@@ -46,6 +46,8 @@ namespace Winform
             this.button1 = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.button2 = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.comboBox_PhongThi = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -186,6 +188,9 @@ namespace Winform
             this.comboBox_KHOATHI.Name = "comboBox_KHOATHI";
             this.comboBox_KHOATHI.Size = new System.Drawing.Size(121, 32);
             this.comboBox_KHOATHI.TabIndex = 14;
+            this.comboBox_KHOATHI.SelectedIndexChanged += new System.EventHandler(this.comboBox_KHOATHI_SelectedIndexChanged);
+            this.comboBox_KHOATHI.SelectionChangeCommitted += new System.EventHandler(this.comboBox_KHOATHI_SelectionChangeCommitted);
+            this.comboBox_KHOATHI.SelectedValueChanged += new System.EventHandler(this.comboBox_KHOATHI_SelectedValueChanged);
             // 
             // button1
             // 
@@ -218,11 +223,32 @@ namespace Winform
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(413, 357);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(90, 24);
+            this.label9.TabIndex = 17;
+            this.label9.Text = "Phòng thi";
+            // 
+            // comboBox_PhongThi
+            // 
+            this.comboBox_PhongThi.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox_PhongThi.FormattingEnabled = true;
+            this.comboBox_PhongThi.Location = new System.Drawing.Point(509, 352);
+            this.comboBox_PhongThi.Name = "comboBox_PhongThi";
+            this.comboBox_PhongThi.Size = new System.Drawing.Size(121, 32);
+            this.comboBox_PhongThi.TabIndex = 18;
+            // 
             // DangKy_ThiSinh
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.comboBox_PhongThi);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.comboBox_KHOATHI);
@@ -266,5 +292,7 @@ namespace Winform
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.ComboBox comboBox_PhongThi;
     }
 }

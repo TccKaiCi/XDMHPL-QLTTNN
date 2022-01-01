@@ -53,21 +53,22 @@
   <Table Name="dbo.PHIEUDUTHI" Member="PHIEUDUTHIs">
     <Type Name="PHIEUDUTHI">
       <Column Name="SoBaoDanh" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="TenPhongThi" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="MaPhongThi" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="CMND" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="MaKhoaThi" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Association Name="PHIEUDUTHI_KETQUA" Member="KETQUAs" ThisKey="SoBaoDanh" OtherKey="SoBaoDanh" Type="KETQUA" />
       <Association Name="THISINH_PHIEUDUTHI" Member="THISINH" ThisKey="CMND" OtherKey="CMND" Type="THISINH" IsForeignKey="true" />
       <Association Name="KHOATHI_PHIEUDUTHI" Member="KHOATHI" ThisKey="MaKhoaThi" OtherKey="MaKhoaThi" Type="KHOATHI" IsForeignKey="true" />
-      <Association Name="PHONGTHI_PHIEUDUTHI" Member="PHONGTHI" ThisKey="TenPhongThi" OtherKey="TenPhongThi" Type="PHONGTHI" IsForeignKey="true" />
+      <Association Name="PHONGTHI_PHIEUDUTHI" Member="PHONGTHI" ThisKey="MaPhongThi" OtherKey="MaPhongThi" Type="PHONGTHI" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.PHONGTHI" Member="PHONGTHIs">
     <Type Name="PHONGTHI">
-      <Column Name="TenPhongThi" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MaPhongThi" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TenPhongThi" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="MaKhoaThi" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="SoLuong" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="PHONGTHI_PHIEUDUTHI" Member="PHIEUDUTHIs" ThisKey="TenPhongThi" OtherKey="TenPhongThi" Type="PHIEUDUTHI" />
+      <Association Name="PHONGTHI_PHIEUDUTHI" Member="PHIEUDUTHIs" ThisKey="MaPhongThi" OtherKey="MaPhongThi" Type="PHIEUDUTHI" />
       <Association Name="KHOATHI_PHONGTHI" Member="KHOATHI" ThisKey="MaKhoaThi" OtherKey="MaKhoaThi" Type="KHOATHI" IsForeignKey="true" />
     </Type>
   </Table>

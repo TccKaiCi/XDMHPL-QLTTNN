@@ -24,9 +24,12 @@ namespace Backend
             using (DatabaseDataContext db = new DatabaseDataContext())
             {
                 var result = from u in db.PHIEUDUTHIs
+                             from v in db.PHONGTHIs
+                             where u.MaPhongThi == v.MaPhongThi
                              select new
                              {
-                                 a = u.TenPhongThi,
+                                 x = v.TenPhongThi,
+                                 a = u.MaPhongThi,
                                  b = u.CMND,
                                  d = u.SoBaoDanh,
                                  e = u.MaKhoaThi
@@ -36,7 +39,8 @@ namespace Backend
                 {
                     PhieuDuThiBUS model = new PhieuDuThiBUS();
 
-                    model.TenPhongThi = i.a;
+                    model.TenPhongThi = i.x;
+                    model.MaPhongThi = i.a;
                     model.CMND = i.b;
                     model.SoBaoDanh = i.d;
                     model.MaKhoaThi = i.e;
@@ -53,10 +57,13 @@ namespace Backend
             using (DatabaseDataContext db = new DatabaseDataContext())
             {
                 var result = from u in db.PHIEUDUTHIs
-                             where u.CMND == CMND
+                             from v in db.PHONGTHIs
+                             where u.MaPhongThi == v.MaPhongThi
+                             & u.CMND == CMND
                              select new
                              {
-                                 a = u.TenPhongThi,
+                                 a = v.TenPhongThi,
+                                 aa = u.MaPhongThi,
                                  b = u.CMND,
                                  d = u.SoBaoDanh,
                                  e = u.MaKhoaThi
@@ -67,6 +74,7 @@ namespace Backend
                     PhieuDuThiBUS model = new PhieuDuThiBUS();
 
                     model.TenPhongThi = i.a;
+                    model.MaPhongThi = i.aa;
                     model.CMND = i.b;
                     model.SoBaoDanh = i.d;
                     model.MaKhoaThi = i.e;
@@ -87,7 +95,7 @@ namespace Backend
                     db.PHIEUDUTHIs.InsertOnSubmit(new PHIEUDUTHI()
                     {
                         CMND = obj.CMND,
-                        TenPhongThi = obj.TenPhongThi,
+                        MaPhongThi = obj.MaPhongThi,
                         SoBaoDanh = obj.SoBaoDanh
                     });
 

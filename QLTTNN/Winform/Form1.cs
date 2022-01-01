@@ -71,5 +71,13 @@ namespace Winform
             c.ShowDialog();
             this.Close();
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            NhapDiemThi c = new NhapDiemThi();
+            this.Hide();
+            c.ShowDialog();
+            this.Close();
+        }
     }
 }

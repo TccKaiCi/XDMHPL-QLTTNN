@@ -66,9 +66,16 @@ namespace Winform.TimKiemThongTinThiSinh
                 dataGridView1.Columns["NgaySinh"].Visible = false;
                 dataGridView1.Columns["MaKhoaThi"].Visible = false;
                 dataGridView1.Columns["NoiSinh"].Visible = false;
+                dataGridView1.Columns["ManPhongThi"].Visible = false;
+                dataGridView1.Columns["TrinhDo"].Visible = false;
 
                 dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             }
+        }
+
+        private void TimKiemThongTIn_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

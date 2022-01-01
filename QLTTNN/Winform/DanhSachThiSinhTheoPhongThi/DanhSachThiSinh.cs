@@ -38,6 +38,8 @@ namespace Winform
             dataGridView1.Columns["diemDoc"].Visible = false;
             dataGridView1.Columns["diemViet"].Visible = false;
             dataGridView1.Columns["NoiSinh"].Visible = false;
+            dataGridView1.Columns["ManPhongThi"].Visible = false;
+            dataGridView1.Columns["MaKhoaThi"].Visible = false;
 
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }

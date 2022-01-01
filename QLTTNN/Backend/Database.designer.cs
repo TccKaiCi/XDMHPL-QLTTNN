@@ -1150,7 +1150,7 @@ namespace Backend
 		
 		private string _SoBaoDanh;
 		
-		private string _TenPhongThi;
+		private string _MaPhongThi;
 		
 		private string _CMND;
 		
@@ -1170,8 +1170,8 @@ namespace Backend
     partial void OnCreated();
     partial void OnSoBaoDanhChanging(string value);
     partial void OnSoBaoDanhChanged();
-    partial void OnTenPhongThiChanging(string value);
-    partial void OnTenPhongThiChanged();
+    partial void OnMaPhongThiChanging(string value);
+    partial void OnMaPhongThiChanged();
     partial void OnCMNDChanging(string value);
     partial void OnCMNDChanged();
     partial void OnMaKhoaThiChanging(string value);
@@ -1207,26 +1207,26 @@ namespace Backend
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenPhongThi", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string TenPhongThi
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaPhongThi", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string MaPhongThi
 		{
 			get
 			{
-				return this._TenPhongThi;
+				return this._MaPhongThi;
 			}
 			set
 			{
-				if ((this._TenPhongThi != value))
+				if ((this._MaPhongThi != value))
 				{
 					if (this._PHONGTHI.HasLoadedOrAssignedValue)
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
-					this.OnTenPhongThiChanging(value);
+					this.OnMaPhongThiChanging(value);
 					this.SendPropertyChanging();
-					this._TenPhongThi = value;
-					this.SendPropertyChanged("TenPhongThi");
-					this.OnTenPhongThiChanged();
+					this._MaPhongThi = value;
+					this.SendPropertyChanged("MaPhongThi");
+					this.OnMaPhongThiChanged();
 				}
 			}
 		}
@@ -1360,7 +1360,7 @@ namespace Backend
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PHONGTHI_PHIEUDUTHI", Storage="_PHONGTHI", ThisKey="TenPhongThi", OtherKey="TenPhongThi", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PHONGTHI_PHIEUDUTHI", Storage="_PHONGTHI", ThisKey="MaPhongThi", OtherKey="MaPhongThi", IsForeignKey=true)]
 		public PHONGTHI PHONGTHI
 		{
 			get
@@ -1383,11 +1383,11 @@ namespace Backend
 					if ((value != null))
 					{
 						value.PHIEUDUTHIs.Add(this);
-						this._TenPhongThi = value.TenPhongThi;
+						this._MaPhongThi = value.MaPhongThi;
 					}
 					else
 					{
-						this._TenPhongThi = default(string);
+						this._MaPhongThi = default(string);
 					}
 					this.SendPropertyChanged("PHONGTHI");
 				}
@@ -1433,6 +1433,8 @@ namespace Backend
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
+		private string _MaPhongThi;
+		
 		private string _TenPhongThi;
 		
 		private string _MaKhoaThi;
@@ -1447,6 +1449,8 @@ namespace Backend
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
+    partial void OnMaPhongThiChanging(string value);
+    partial void OnMaPhongThiChanged();
     partial void OnTenPhongThiChanging(string value);
     partial void OnTenPhongThiChanged();
     partial void OnMaKhoaThiChanging(string value);
@@ -1462,7 +1466,27 @@ namespace Backend
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenPhongThi", DbType="NVarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaPhongThi", DbType="NVarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string MaPhongThi
+		{
+			get
+			{
+				return this._MaPhongThi;
+			}
+			set
+			{
+				if ((this._MaPhongThi != value))
+				{
+					this.OnMaPhongThiChanging(value);
+					this.SendPropertyChanging();
+					this._MaPhongThi = value;
+					this.SendPropertyChanged("MaPhongThi");
+					this.OnMaPhongThiChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenPhongThi", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
 		public string TenPhongThi
 		{
 			get
@@ -1526,7 +1550,7 @@ namespace Backend
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PHONGTHI_PHIEUDUTHI", Storage="_PHIEUDUTHIs", ThisKey="TenPhongThi", OtherKey="TenPhongThi")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PHONGTHI_PHIEUDUTHI", Storage="_PHIEUDUTHIs", ThisKey="MaPhongThi", OtherKey="MaPhongThi")]
 		public EntitySet<PHIEUDUTHI> PHIEUDUTHIs
 		{
 			get

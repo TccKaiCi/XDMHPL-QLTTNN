@@ -20,6 +20,7 @@ namespace Backend
                              where u.MaKhoaThi == v.MaKhoaThi
                              select new
                              {
+                                 aa = u.MaPhongThi,
                                  a = u.TenPhongThi,
                                  b = u.MaKhoaThi,
                                  c = u.SoLuong,
@@ -34,6 +35,7 @@ namespace Backend
                 {
                     PhongThiBUS model = new PhongThiBUS();
 
+                    model.MaPhongThi = i.aa;
                     model.TenPhongThi = i.a;
                     model.MaKhoaThi = i.b;
                     model.SoLuong = i.c;
@@ -59,6 +61,7 @@ namespace Backend
                 {
                     db.PHONGTHIs.InsertOnSubmit(new PHONGTHI()
                     {
+                        MaPhongThi = obj.MaPhongThi,
                         TenPhongThi = obj.TenPhongThi,
                         SoLuong = obj.SoLuong,
                         MaKhoaThi = obj.MaKhoaThi
@@ -83,7 +86,7 @@ namespace Backend
             {
                 using (DatabaseDataContext db = new DatabaseDataContext())
                 {
-                    var gia = db.PHONGTHIs.Where(p => p.TenPhongThi.Equals(obj.TenPhongThi)).SingleOrDefault();
+                    var gia = db.PHONGTHIs.Where(p => p.MaPhongThi.Equals(obj.MaPhongThi)).SingleOrDefault();
                     db.PHONGTHIs.DeleteOnSubmit(gia);
                     db.SubmitChanges();
                 }
@@ -102,7 +105,8 @@ namespace Backend
             {
                 using (DatabaseDataContext db = new DatabaseDataContext())
                 {
-                    var tour = db.PHONGTHIs.Where(p => p.TenPhongThi.Equals(obj.TenPhongThi)).SingleOrDefault();
+                    var tour = db.PHONGTHIs.Where(p => p.MaPhongThi.Equals(obj.MaPhongThi)).SingleOrDefault();
+                    tour.TenPhongThi = obj.TenPhongThi;
                     tour.SoLuong = obj.SoLuong;
                     tour.MaKhoaThi = obj.MaKhoaThi;
 

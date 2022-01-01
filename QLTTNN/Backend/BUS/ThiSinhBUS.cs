@@ -23,23 +23,29 @@ namespace Backend
             //phieu du thi
             SoBaoDanh = PhieuDuThiBUS.getNextSBD(PhieuDuThiBUS.getAllStatic()
                 , KhoaThiBUS.getTrinhDoByKhoa(KhoaThiBUS.getAllStatic(), MaKhoaThi) );
-            TenPhongThi = PhongThiBUS.getPhongThiByMaKhoaThi(PhongThiBUS.GetAll(), MaKhoaThi);
+            if (ManPhongThi == null || ManPhongThi == "")
+                ManPhongThi = PhongThiBUS.getMaPhong_MaKhoaThi(PhongThiBUS.GetAll(), MaKhoaThi);
             CaThi = "Ca sáng";
 
             return ThiSinhDAL.Insert(this);
         }
 
+        public Boolean UpdateDiem() => ThiSinhDAL.UpdateDiem(this); 
+
 
 
         public string SoBaoDanh { get; set; }
+        public string ManPhongThi { get; set; }
         public string TenPhongThi { get; set; }
         public string CaThi { get; set; }
         public string MaKhoaThi { get; set; }
+        public string TrinhDo { get; set; }
 
         public int diemNghe { get; set; }
         public int diemNoi { get; set; }
         public int diemViet { get; set; }
         public int diemDoc { get; set; }
+
 
         public static ThiSinhBUS findBy_HoTen_SDT(List<ThiSinhBUS> list, string hoten, string sdt)
         {
@@ -50,6 +56,7 @@ namespace Backend
                 {
                     res.SoBaoDanh = x.SoBaoDanh;
                     res.TenPhongThi = x.TenPhongThi;
+                    res.ManPhongThi = x.ManPhongThi;
                     res.diemViet = x.diemViet;
                     res.diemNoi = x.diemNoi;
                     res.diemNghe = x.diemNghe;
@@ -74,6 +81,7 @@ namespace Backend
                     res.MaKhoaThi = x.MaKhoaThi;
                     res.SoBaoDanh = x.SoBaoDanh;
                     res.TenPhongThi = x.TenPhongThi;
+                    res.ManPhongThi = x.ManPhongThi;
                     res.GioiTinh = x.GioiTinh;
                     res.diemViet = x.diemViet;
                     res.diemNoi = x.diemNoi;
@@ -102,6 +110,7 @@ namespace Backend
                     res.NgaySinh = x.NgaySinh;
                     res.NoiSinh = res.NoiSinh;
                     res.TenPhongThi = x.TenPhongThi;
+                    res.ManPhongThi = x.ManPhongThi;
                     res.diemViet = x.diemViet;
                     res.diemNoi = x.diemNoi;
                     res.diemNghe = x.diemNghe;
@@ -132,5 +141,33 @@ namespace Backend
             return resList;
         }
 
+        public static List<ThiSinhBUS> findBy_MaPhongThi(List<ThiSinhBUS> list, string ma)
+        {
+            List<ThiSinhBUS> resList = new List<ThiSinhBUS>();
+
+            list.ForEach(x => {
+                if (x.ManPhongThi.Equals(ma))
+                {
+                    ThiSinhBUS res = new ThiSinhBUS();
+
+                    res.SoBaoDanh = x.SoBaoDanh;
+                    res.HoTen = x.HoTen;
+                    res.GioiTinh = x.GioiTinh;
+                    res.SDT = x.SDT;
+                    res.GioiTinh = x.GioiTinh;
+                    res.TenPhongThi = x.TenPhongThi;
+                    res.TrinhDo = x.TrinhDo;
+                    res.diemDoc = x.diemDoc;
+                    res.diemNghe = x.diemNghe;
+                    res.diemNoi = x.diemNoi;
+                    res.diemViet = x.diemViet;
+                    res.MaKhoaThi = x.MaKhoaThi;
+
+                    resList.Add(res);
+                }
+            });
+
+            return resList;
+        }
     }
 }

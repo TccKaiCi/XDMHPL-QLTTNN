@@ -68,6 +68,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="NhapDiemChoPhongThi\NhapDiemThi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NhapDiemChoPhongThi\NhapDiemThi.Designer.cs">
+      <DependentUpon>NhapDiemThi.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuanLyKhoaThi\QLKhoaThi.cs">
@@ -93,6 +99,12 @@
     </Compile>
     <Compile Include="QuanLyPhongThi\QLPhongThi.Designer.cs">
       <DependentUpon>QLPhongThi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QuanLyPhongThi\SuaPhongThi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuanLyPhongThi\SuaPhongThi.Designer.cs">
+      <DependentUpon>SuaPhongThi.cs</DependentUpon>
     </Compile>
     <Compile Include="QuanLyPhongThi\ThemPhongThi.cs">
       <SubType>Form</SubType>
@@ -121,6 +133,9 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="NhapDiemChoPhongThi\NhapDiemThi.resx">
+      <DependentUpon>NhapDiemThi.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -141,6 +156,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="QuanLyPhongThi\QLPhongThi.resx">
       <DependentUpon>QLPhongThi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuanLyPhongThi\SuaPhongThi.resx">
+      <DependentUpon>SuaPhongThi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="QuanLyPhongThi\ThemPhongThi.resx">
       <DependentUpon>ThemPhongThi.cs</DependentUpon>
@@ -164,8 +182,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="NhapDiemChoPhongThi\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

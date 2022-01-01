@@ -46,17 +46,26 @@ namespace Winform
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            XoaPhongThi c = new XoaPhongThi(dataGridView1.SelectedCells[0].Value.ToString());
+            string MaPhong = dataGridView1.SelectedCells[0].Value.ToString();
+            string tenPhong = dataGridView1.SelectedCells[1].Value.ToString();
+            XoaPhongThi c = new XoaPhongThi(tenPhong);
             c.ShowDialog();
 
             if (c.DialogResult == DialogResult.OK)
             {
-                //KhoaThiBUS model = new KhoaThiBUS();
-                //model.MaKhoaThi = dataGridView1.SelectedCells[0].Value.ToString();
-                //model.Delete();
+                PhongThiBUS model = new PhongThiBUS();
+                model.MaPhongThi = MaPhong;
 
-                MessageBox.Show("Xóa thành công");
-                reloadData();
+
+                if (model.Delete())
+                {
+                    MessageBox.Show("Xóa thành công");
+                    reloadData();
+                } else
+                {
+                    MessageBox.Show("Xóa thất bại");
+                }
+
             }
             c.Dispose();
         }
@@ -64,6 +73,19 @@ namespace Winform
         private void buttonAdd_Click(object sender, EventArgs e)
         {
             ThemPhongThi c = new ThemPhongThi();
+            c.ShowDialog();
+
+            if (c.DialogResult == DialogResult.OK)
+            {
+                reloadData();
+            }
+            c.Dispose();
+        }
+
+        private void buttonMod_Click(object sender, EventArgs e)
+        {
+            string tenPhong = dataGridView1.SelectedCells[0].Value.ToString();
+            SuaPhongThi c = new SuaPhongThi(tenPhong);
             c.ShowDialog();
 
             if (c.DialogResult == DialogResult.OK)
